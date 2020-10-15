@@ -8,7 +8,6 @@ class BMIClass extends React.Component {
       weight: '',
       bmi: '',
     }
-
   }
 
   calcBMI = (h, w) =>
