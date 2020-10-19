@@ -4,14 +4,12 @@ import TodoList from './todo/TodoList'
 
 function TodoApp(props) {
   const [todoInput, setTodoInput] = useState('')
-  // 0=all, 1= (view completed = true), 2=(view completed =false)
-  const [viewFilter, setViewFilter] = useState(0)
-
   // 將每個待辨事項改為物件值
   // { id, text: string, completed: bool, edited: bool }
-  //const [todos, setTodos] = useState([])
-  // 改由父母元件的狀態值來設定和使用
-  const { todos, setTodos } = props
+  const [todos, setTodos] = useState([
+    { id: 1, text: '買iphone 12', completed: false, edited: false },
+    { id: 2, text: '學好react', completed: true, edited: false },
+  ])
 
   // 利用id值尋找對應的item的索引值，然後改變edited值
   const handleEditedToggle = (id) => {
@@ -89,17 +87,12 @@ function TodoApp(props) {
         setTodos={setTodos}
       />
       <hr />
-      <button onClick={() => setViewFilter(0)}>所有</button>{' '}
-      <button onClick={() => setViewFilter(1)}>已完成</button>{' '}
-      <button onClick={() => setViewFilter(2)}>未完成</button>
-      <hr />
       <TodoList
         todos={todos}
         handleEditedToggle={handleEditedToggle}
         handleCompleted={handleCompleted}
         handleDelete={handleDelete}
         handleEditedSave={handleEditedSave}
-        viewFilter={viewFilter}
       />
     </>
   )
